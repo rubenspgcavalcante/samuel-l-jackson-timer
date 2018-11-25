@@ -31,7 +31,7 @@ module.exports = (env = {}) => ({
         use: "url-loader?limit=10000"
       },
       {
-        test: /\.(ttf|eot)(\?[\s\S]+)?$/,
+        test: /\.(ttf|eot|mp3)(\?[\s\S]+)?$/,
         use: "file-loader"
       },
       {
