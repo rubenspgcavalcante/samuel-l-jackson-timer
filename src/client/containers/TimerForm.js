@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Timer from "../components/Timer";
+import TimerForm from "../components/TimerForm";
 import { emitAction, listenActions } from "../actions/connection";
 import { setCurrentTimer } from "../../commons/actions/index";
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Timer);
+)(TimerForm);

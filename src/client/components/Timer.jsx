@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-export default ({ current, triggerTimer, listenActions }) => {
-  const [seconds, setSeconds] = useState(60);
-
-  useEffect(
-    () => {
-      listenActions();
-    },
-    [true]
-  );
+export default ({ current, maxLength }) => {
+  const currBlocks = current? current.toString().split("") : "";
+  const blocks = [
+    ...Array.from({ length: maxLength - currBlocks.length }).map(nil => 0),
+    ...currBlocks
+  ];
 
   return (
-    <div>
-      <p>Timer: {current}</p>
-      <input
-        type="number"
-        value={seconds}
-        onChange={({ target }) => setSeconds(target.value)}
-      />
-      <button onClick={() => triggerTimer(seconds)}> Trigger timer </button>
+    <div id="timer" className="columns">
+      {blocks.map((block, idx) => (
+        <div key={idx} className="column">
+          <b className="box has-background-dark has-text-white">{block}</b>
+        </div>
+      ))}
     </div>
   );
 };
