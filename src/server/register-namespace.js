@@ -1,5 +1,5 @@
 const store = require("./server-store");
-const { currentTimer, SET_CURRENT_TIMER } = require("../commons/actions/index");
+const { shutUp, currentTimer, SET_CURRENT_TIMER } = require("../commons/actions/index");
 const { setupRoom } = require("../commons/actions/index");
 const { startCountDown } = require("./actions/countdown");
 
@@ -35,6 +35,10 @@ module.exports = (io, ns) => {
         if (rooms.hasOwnProperty(ns) && rooms[ns] !== currTimer) {
           currTimer = rooms[ns];
           socket.emit("action", currentTimer(currTimer));
+
+          if(currTimer === 0) {
+            socket.emit("action", shutUp())
+          }
         }
       });
     });
