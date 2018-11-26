@@ -3,11 +3,7 @@ import TimerForm from "../components/TimerForm";
 import { emitAction, listenActions } from "../actions/connection";
 import { setCurrentTimer } from "../../commons/actions/index";
 
-<<<<<<< HEAD
-const mapStateToProps = ({ timer: { current } }) => ({ current });
-=======
 const mapStateToProps = ({ timer: { current, shutUp } }) => ({ current, shutUp });
->>>>>>> dev
 
 const mapDispatchToProps = {
   listenActions: () => listenActions(location.pathname),
