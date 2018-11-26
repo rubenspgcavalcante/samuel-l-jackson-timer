@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons/faClock";
 import { faBolt } from "@fortawesome/free-solid-svg-icons/faBolt";
-import classNames from "class-names";
 import Timer from "./Timer";
+import CopyRoom from "./CopyRoom";
+import SLJTimeout from "./SLJTimeout";
 
-export default ({ current, triggerTimer, listenActions }) => {
+export default ({ current, shutUp, triggerTimer, listenActions }) => {
   const [seconds, setSeconds] = useState(60);
-  const [submited, setSubmited] = useState(false);
 
   useEffect(
     () => {
@@ -20,8 +20,12 @@ export default ({ current, triggerTimer, listenActions }) => {
     <div className="columns is-centered">
       <div className="column is-half">
         <div className="box">
-          <Timer current={current} maxLength={3} />
-
+          {current === 0 && shutUp ? (
+            <SLJTimeout />
+          ) : (
+            <Timer current={current} maxLength={3} />
+          )}
+          <CopyRoom />
           <div className="field has-addons">
             <p className="control has-icons-left is-expanded">
               <input
@@ -38,15 +42,8 @@ export default ({ current, triggerTimer, listenActions }) => {
             </p>
             <p className="control">
               <a
-                className={classNames("button is-primary", {
-                  disabled: submited
-                })}
-                onClick={() => {
-                  if (!submited) {
-                    triggerTimer(seconds);
-                    setSubmited(true);
-                  }
-                }}
+                className={"button is-primary"}
+                onClick={() => triggerTimer(seconds)}
               >
                 <span className="icon is-small is-left">
                   <FontAwesomeIcon icon={faBolt} color="yellow" />
