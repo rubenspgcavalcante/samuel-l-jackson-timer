@@ -8,6 +8,14 @@ import SLJTimeout from "./SLJTimeout";
 
 export default ({ current, shutUp, triggerTimer, listenActions }) => {
   const [seconds, setSeconds] = useState(60);
+  const [startedAt, setStartedAt] = useState(0);
+
+  useEffect(() => {
+    if(startedAt === 0 && current) {
+      setStartedAt(current);
+      console.log(current)
+    }
+  }, [current])
 
   useEffect(
     () => {
@@ -23,7 +31,7 @@ export default ({ current, shutUp, triggerTimer, listenActions }) => {
           {current === 0 && shutUp ? (
             <SLJTimeout />
           ) : (
-            <Timer current={current} maxLength={3} />
+            <Timer from={startedAt} current={current} maxLength={3} />
           )}
           <CopyRoom />
           <div className="field has-addons">
