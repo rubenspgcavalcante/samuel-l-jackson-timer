@@ -9,9 +9,12 @@ module.exports = (env = {}) => ({
   mode,
   devtool: "source-map",
   entry: { app: "./src/client/index.jsx" },
+<<<<<<< HEAD
   output: {
     publicPath: "/static"
   },
+=======
+>>>>>>> dev
   module: {
     rules: [
       {
@@ -34,7 +37,11 @@ module.exports = (env = {}) => ({
         use: "url-loader?limit=10000"
       },
       {
+<<<<<<< HEAD
         test: /\.(ttf|eot)(\?[\s\S]+)?$/,
+=======
+        test: /\.(ttf|eot|mp3)(\?[\s\S]+)?$/,
+>>>>>>> dev
         use: "file-loader"
       },
       {
@@ -56,12 +63,19 @@ module.exports = (env = {}) => ({
   },
   plugins: [
     new HtmlWebpackPlugin(),
+<<<<<<< HEAD
     isProd
       ? new MiniCssExtractPlugin({
           filename: "[name].css",
           chunkFilename: "[id].css"
         })
       : null,
+=======
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+>>>>>>> dev
     isDev ? new HotModuleReplacementPlugin() : null
   ].filter(p => p)
 });

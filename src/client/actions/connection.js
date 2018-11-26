@@ -8,6 +8,7 @@ export const emitAction = (roomId, action) => dispatch => {
   dispatch({ type: EMIT_ACTION, payload: action });
 };
 
+<<<<<<< HEAD
 export const listenActions = roomId => dispatch =>
   fetch(location.href, {
     method: "POST"
@@ -16,3 +17,12 @@ export const listenActions = roomId => dispatch =>
     dispatch({ type: LISTEN_ACTIONS_START, payload: roomId });
     room("action", action => dispatch(action));
   });
+=======
+export const listenActions = roomId => {
+  const room = listener(roomId);
+  return dispatch => {
+    dispatch({ type: LISTEN_ACTIONS_START, payload: roomId });
+    room("action", action => dispatch(action));
+  };
+};
+>>>>>>> dev

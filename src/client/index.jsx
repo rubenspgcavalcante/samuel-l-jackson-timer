@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import {
@@ -13,6 +14,13 @@ import MainTemplate from "./components/MainTemplate";
 
 import TimerForm from "./containers/TimerForm";
 import GetRoom from "./components/GetRoom";
+=======
+import {render} from "react-dom";
+import {Provider} from "react-redux";
+import store from "./cli-store";
+import MainTemplate from "./components/MainTemplate";
+import TimerForm from "./containers/TimerForm";
+>>>>>>> dev
 
 import "./scss/index.scss";
 
@@ -23,6 +31,7 @@ document.body.appendChild(app);
 render(
   <Provider store={store}>
     <MainTemplate>
+<<<<<<< HEAD
       <Router>
         <Switch>
           <Route exact path="/" component={GetRoom} />
@@ -34,3 +43,10 @@ render(
   </Provider>,
   app
 );
+=======
+      <TimerForm />
+    </MainTemplate>
+  </Provider>,
+  app
+);
+>>>>>>> dev
