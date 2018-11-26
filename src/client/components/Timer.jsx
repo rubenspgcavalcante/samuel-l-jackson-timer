@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHourglass } from "@fortawesome/free-regular-svg-icons";
 
 export default ({ current, from, maxLength }) => {
   const percent = from ? 100 * (current / from) : 0;
@@ -13,11 +15,14 @@ export default ({ current, from, maxLength }) => {
       <progress className="progress is-large" value={percent} max="100">
         {percent}%
       </progress>
-      <div className="columns">
+      <div className="has-text-centered clock">
+        <span className="icon">
+          <FontAwesomeIcon icon={faHourglass} />
+        </span>
         {blocks.map((block, idx) => (
-          <div key={idx} className="column">
-            <b className="box has-background-dark has-text-white">{block}</b>
-          </div>
+          <b key={idx}>
+            {block}
+          </b>
         ))}
       </div>
     </div>

@@ -13,7 +13,6 @@ export default ({ current, shutUp, triggerTimer, listenActions }) => {
   useEffect(() => {
     if(startedAt === 0 && current) {
       setStartedAt(current);
-      console.log(current)
     }
   }, [current])
 

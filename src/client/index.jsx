@@ -16,10 +16,6 @@ import GetRoom from "./components/GetRoom";
 
 import "./scss/index.scss";
 
-const app = document.createElement("div");
-app.setAttribute("id", "app");
-
-document.body.appendChild(app);
 render(
   <Provider store={store}>
     <MainTemplate>
@@ -32,5 +28,5 @@ render(
       </Router>
     </MainTemplate>
   </Provider>,
-  app
+  document.getElementById("app")
 );

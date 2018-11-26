@@ -55,7 +55,9 @@ module.exports = (env = {}) => ({
     extensions: [".js", ".jsx", ".json"]
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/client/assets/template.html'
+    }),
     isProd
       ? new MiniCssExtractPlugin({
           filename: "[name].css",
