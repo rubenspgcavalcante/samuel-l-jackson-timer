@@ -4,10 +4,10 @@ import { faClock } from "@fortawesome/free-regular-svg-icons/faClock";
 import { faBolt } from "@fortawesome/free-solid-svg-icons/faBolt";
 import Timer from "./Timer";
 import CopyRoom from "./CopyRoom";
+import SLJTimeout from "./SLJTimeout";
 
-export default ({ current, triggerTimer, listenActions }) => {
+export default ({ current, shutUp, triggerTimer, listenActions }) => {
   const [seconds, setSeconds] = useState(60);
-  const [submited, setSubmited] = useState(false);
 
   useEffect(
     () => {
