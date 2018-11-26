@@ -24,8 +24,12 @@ if (NODE_ENV === "development") {
   app.use("/static", express.static(resolve(process.cwd(), "./dist")));
 }
 
+app.post("/room/[0-9a-zA-Z]+", (req, res) => {
+  registerNamespace(io, req.path);
+  res.sendStatus(200);
+});
+
 app.get("/room/[0-9a-zA-Z]+", (req, res) => {
-  req.path && registerNamespace(io, req.path);
   res.sendFile(resolve(process.cwd(), "./dist/index.html"));
 });
 

@@ -8,10 +8,11 @@ export const emitAction = (roomId, action) => dispatch => {
   dispatch({ type: EMIT_ACTION, payload: action });
 };
 
-export const listenActions = roomId => {
-  const room = listener(roomId);
-  return dispatch => {
+export const listenActions = roomId => dispatch =>
+  fetch(location.href, {
+    method: "POST"
+  }).then(res => {
+    const room = listener(roomId);
     dispatch({ type: LISTEN_ACTIONS_START, payload: roomId });
     room("action", action => dispatch(action));
-  };
-};
+  });
