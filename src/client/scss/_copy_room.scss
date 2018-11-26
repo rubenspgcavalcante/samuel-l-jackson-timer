@@ -1,0 +1,12 @@
+#copy-room {
+  .notification-wrapper {
+    position: absolute;
+    z-index: 1;
+
+    .notification {
+      position: relative;
+      bottom: 7rem;
+      padding: 0.8rem;
+    }
+  }
+}

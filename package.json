@@ -29,6 +29,7 @@
     "react": "^1v16.7.0-alpha",
     "react-dom": "^v16.7.0-alpha",
     "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "rxjs": "^6.3.3",

@@ -10,7 +10,7 @@ module.exports = (env = {}) => ({
   devtool: "source-map",
   entry: { app: "./src/client/index.jsx" },
   output: {
-    publicPath: '/static'
+    publicPath: "/static"
   },
   module: {
     rules: [
@@ -56,10 +56,12 @@ module.exports = (env = {}) => ({
   },
   plugins: [
     new HtmlWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
+    isProd
+      ? new MiniCssExtractPlugin({
+          filename: "[name].css",
+          chunkFilename: "[id].css"
+        })
+      : null,
     isDev ? new HotModuleReplacementPlugin() : null
   ].filter(p => p)
 });

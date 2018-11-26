@@ -11,11 +11,15 @@ const registerNamespace = require("./register-namespace");
 const { HOST, PORT, NODE_ENV } = process.env;
 
 if (NODE_ENV === "development") {
+  const webpackConfig = require("../../webpack.config")();
+
   const webpack = require("webpack");
   const middleware = require("webpack-dev-middleware");
-  const compiler = webpack(require("../../webpack.config")());
+  const compiler = webpack(webpackConfig);
 
-  app.use(middleware(compiler));
+  app.use(
+    middleware(compiler, { publicPath: webpackConfig.output.publicPath })
+  );
 } else {
   app.use("/static", express.static(resolve(process.cwd(), "./dist")));
 }

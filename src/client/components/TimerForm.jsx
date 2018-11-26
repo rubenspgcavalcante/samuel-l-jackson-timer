@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons/faClock";
 import { faBolt } from "@fortawesome/free-solid-svg-icons/faBolt";
+
 import classNames from "class-names";
 import Timer from "./Timer";
+import CopyRoom from "./CopyRoom";
 
 export default ({ current, triggerTimer, listenActions }) => {
   const [seconds, setSeconds] = useState(60);
@@ -21,7 +23,7 @@ export default ({ current, triggerTimer, listenActions }) => {
       <div className="column is-half">
         <div className="box">
           <Timer current={current} maxLength={3} />
-
+          <CopyRoom />
           <div className="field has-addons">
             <p className="control has-icons-left is-expanded">
               <input
