@@ -9,6 +9,9 @@ module.exports = (env = {}) => ({
   mode,
   devtool: "source-map",
   entry: { app: "./src/client/index.jsx" },
+  output: {
+    publicPath: '/static'
+  },
   module: {
     rules: [
       {
